@@ -8,5 +8,7 @@ class starts: 17th may 2022 <br>
 fees: Rs.6000 (1500 per month) <br>
 Duration: 4 month course <br>
 fee payment: Easy paisa or jazzcash number 03022004480 <br>
+Recordings: https://youtube.com/playlist?list=PLaZSdijfCCJARXSh2ZYMgfF7xT1nTWibH (private)
+
 
 
