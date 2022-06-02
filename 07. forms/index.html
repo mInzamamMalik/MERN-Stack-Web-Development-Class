@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>
+        <a href="https://studio.youtube.com/channel/UCa3DSrpfOEwBaiarlBPvWBg">my youtube channel</a>
+    </button>
+
+    <h1>Forms: </h1>
+
+
+    <form>
+
+        <fieldset>
+            <legend>Bio Data</legend>
+
+            <label for="nameInput"> Name: </label>
+            <input required minlength="3" maxlength="20" type="text" id="nameInput"
+                placeholder="enter your full name here">
+
+            <br>
+
+            <label for="rollInput"> Roll: </label>
+            <input required size="5" type="text" id="rollInput">
+            <br>
+
+            <label for="dobInput"> Date of birth: </label>
+            <input required type="date" id="dobInput">
+
+        </fieldset>
+        
+        <fieldset>
+            <legend>Contact Info</legend>
+
+            <br>
+
+            <label for="passwordInput"> password: </label>
+            <input required minlength="6" maxlength="20" size="20" type="password" id="passwordInput">
+
+            <br>
+
+            <label for="urlInput"> Url: </label>
+            <input required pattern="https?://.+" type="text" id="urlInput">
+
+            <br>
+
+            <label for="commentInput"> your comment: </label>
+            <textarea maxlength="50" rows="6" cols="50" id="commentInput"
+                placeholder="your comment goes here"></textarea>
+
+            <br>
+
+            <select name="instruments" size="3" multiple="multiple">
+                <option value="guitar" selected="selected">
+                    Guitar</option>
+                <option value="drums">Drums</option>
+                <option value="keyboard" selected="selected">Keyboard</option>
+                <option value="bass">Bass</option>
+            </select>
+
+            <br>
+
+            <label for="profilePhotoInput">profile photo</label>
+            <input type="file" accept=".pdf" id="profilePhotoInput">
+
+            <br>
+            <br>
+        </fieldset>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form>
+
+        <label for="nameInput"> Name: </label>
+        <input required minlength="3" maxlength="20" type="text" id="nameInput">
+
+        <br>
+
+        <label for="rollInput"> Roll: </label>
+        <input required size="5" type="text" id="rollInput">
+
+        <br>
+
+        <label for="passwordInput"> password: </label>
+        <input required minlength="6" maxlength="20" size="20" type="password" id="passwordInput">
+
+        <br>
+        <br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+
+
+
+</html>
