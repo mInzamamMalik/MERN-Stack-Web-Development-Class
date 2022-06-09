@@ -1,0 +1,72 @@
+/*
+* {
+    color: red;
+}
+*/
+
+
+/* p {
+    background-color: rgb(255, 163, 110);
+} */
+
+
+#introduction {
+    background-color: rgb(255, 163, 110);
+}
+
+
+.note {
+    background-color: rgb(255, 245, 158);
+    font-style: italic;
+}
+
+p.note {
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+li>a {
+    color: green
+}
+
+
+span+p {
+    background-color: red;
+}
+span+p{
+    background-color: rgb(195, 163, 240);
+}
+p {
+    background-color: aqua;
+}
+
+span~p {
+    border: 2px solid purple;
+}
+
+#firstChild {
+    color: rgb(0, 255, 4);
+}
+
+#firstChild+span {
+    color: rgb(183, 252, 184);
+
+}
+
+#firstChild+span+span {
+    color: rgb(124, 124, 124);
+
+}
+
+#firstChild+span+span+span {
+    color: rgb(255, 45, 45);
+
+}
+
+#firstChild {
+    color: rgb(255, 45, 45);
+}
+
+p{
+    color: #636394;
+}
