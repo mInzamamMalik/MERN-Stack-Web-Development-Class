@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .para {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .small {
+            font-size: 10px;
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            src: url('fonts/Roboto-Light.ttf');
+        }
+
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            text-shadow: 1px 1px 0px lightcoral;
+        }
+
+        h1::first-letter {
+            font-style: italic;
+        }
+
+        h1:hover {
+            text-shadow: 1px 1px 5px lightcoral;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .right:hover {
+            text-align: right;
+        }
+
+        input:focus {
+            color: pink;
+            font-size: 32px;
+            border: 1px solid pink !important;
+        }
+        p[class]{
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>
+        F <span class="small">o</span> nt Family
+    </h1>
+    <p class="para small">
+        The font-family property allows you to specify the typeface that should be used for any text inside the
+        element(s) to which a CSS rule applies.
+        The value of this property is the name of the typeface you want to use.
+        The people who are visiting your site need the typeface you have specified installed on their computer in order
+        for it to be displayed.
+
+    </p>
+
+
+    <p class="para">
+        If a font name is made up of more than one word, it should be put in double quotes.
+        Designers suggest pages usually look better if they use no more than three typefaces on a page.
+    </p>
+
+    <span class="para">
+
+        The font-family property can be used to specify the typeface that should be used for any text inside the
+        element(s) to which a CSS rule applies.
+        The value of this property is the name of the typeface you want to use.
+        The people who are visiting your site need the typeface you have specified installed on their computer in order
+        for it to be displayed.
+    </span>
+
+    <span class="right">Hello world</span>
+
+    <p class="right">hello world</p>
+
+    <a href="http://google.com">visit me</a>
+
+    <input type="text">
+
+
+
+</body>
+
+</html>
