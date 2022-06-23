@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        header {
+            background-color: #FCB0B0;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            padding: 16px;
+        }
+
+        nav>ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav>ul>li {
+            margin: 0px 10px;
+            background-color: white;
+            padding: 10px 30px;
+            border-radius: 15px;
+            border: 1px solid black;
+        }
+
+        @media screen and (max-width: 600px) {
+            nav>ul>li {
+                padding: 10px 10px;
+                margin: 0px 3px;
+            }
+        }
+
+        section {
+            margin-top: 10px;
+            background-color: #FCB0B0;
+            display: flex;
+            padding: 15px;
+        }
+
+        .section-right {
+            margin-left: 10px;
+            max-width: 250px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .section-right {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <img class="logo" src="./images/logo.webp" alt="">
+        </div>
+
+        <nav class="right">
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Gallery</li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <section>
+
+        <div class="section-left">
+            <h1> Section left </h1>
+            <p>
+                This example demonstrates a modern magazine-style layout using the 960.gs grid. Using this style sheet
+                saves us from having to create all of the CSS code ourselves.
+            </p>
+            <p>
+                Several classes from the 960.gs style sheet have been added to the code to indicate how many columns of
+                the grid each element should stretch across. As you saw in this chapter, the 960.gs stylesheet uses the
+                float property to position the blocks next to each other.
+
+            </p>
+            <p>
+                At the start of the page, the header uses fixed positioning (meaning that it does not move when the user
+                scrolls down the page). The z-index property is added to the header to keep it on top of the remaining
+                content as the user scrolls down the page.
+
+            </p>
+
+        </div>
+
+        <div class="section-right">
+            <h2> Notes: </h2>
+            <p>
+                The feature article takes up the entire width of the page. The push_7 and push_9 classes are part of the
+                960.gs style sheet and are used in the feature article to move the header and the content for this
+                article over to the right.
+            </p>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
