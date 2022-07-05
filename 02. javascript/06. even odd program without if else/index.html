@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Even Odd program</h1>
+
+
+
+    <form onsubmit="calculate(); return false;">
+
+        <label for="num1">Enter a number</label>
+        <input type="number" min="1" required id="num1" placeholder="Enter a number to check if it is even or odd">
+        <br>
+
+        <button type="submit">Check</button>
+
+    </form>
+
+    <p id="result"></p>
+
+
+    <script>
+
+        function calculate() {
+
+            let num1 = document.querySelector("#num1").value;
+
+            num1 = Number(num1)
+
+            result = num1 % 2;
+
+            let resultLine =
+                `you entered ${num1} and here is your result: <b> ${result} </b>
+                <br><br>
+                (if result shows zero it means your entered number was even, otherwise it was odd)`;
+
+            document.querySelector("#result").innerHTML = resultLine;
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
