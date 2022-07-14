@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Logical Operators</h1>
+    <p> && - Logical AND operator </p>
+
+    <script>
+        // let percentage = +prompt("Enter your percentage");
+
+        // // 79.9
+        // if (percentage >= 80) {
+        //     console.log("A1 Grade");
+
+
+        // } else if (percentage >= 70 && percentage < 80) {
+        //     console.log("A Grade");
+
+
+        // } else if (percentage >= 60 && percentage < 70) {
+        //     console.log("B Grade");
+
+        // } else {
+        //     console.log("Fail");
+        // }
+
+
+        // Truth Table logical AND operator
+        // ================================
+        // true && true = true 
+        // true && false = false
+        // false && true = false
+        // false && false = false
+
+
+        // Truth table logical OR operator
+        // ================================
+        // true || true = true
+        // true || false = true
+        // false || true = true
+        // false || false = false
+
+        let age = +prompt("Enter your age");
+        let yearOfEducation = +prompt("Enter your year of education");
+        let city = prompt("Enter your city");
+
+        // 24 , 16 , "karachi"
+        if (
+            (age < 18 && yearOfEducation >= 10)
+            ||
+            (age < 26 && yearOfEducation >= 16)
+
+            && city === "karachi"
+        ) {
+            console.log("you are eligible");
+        } 
+
+
+
+    </script>
+
+
+</body>
+
+</html>
