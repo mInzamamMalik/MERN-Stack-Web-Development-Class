@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Nested If statement</h1>
+
+    <script>
+
+
+        let dbEmail = "abc@abc.com"
+        let dbPassword = "1234"
+
+        let userInputEmail = prompt("enter email to login");
+        let userInputPassword = prompt("enter password to login");
+
+        if (userInputEmail === dbEmail) {
+           
+            if (userInputPassword === dbPassword) {
+                alert("login successful");
+            }else{
+                alert("password incorrect");
+            }
+       
+        }else{
+            alert("your entered wrong email / this account does not exist");
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

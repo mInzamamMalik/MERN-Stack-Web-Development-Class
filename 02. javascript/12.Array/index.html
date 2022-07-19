@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Data type: Array </h1>
+
+    <script>
+
+        let myNum = 5; // 64 bit floating point number
+        let name = `this isn't my car`; // 2 byte per charecter x 17 = 34 bytes
+        let isOpen = true; // 1 bit
+
+        console.log("myNum: ", myNum)
+
+
+        let myArray = [5, "malik", name, true, "another name", 43];
+
+        console.log("myArray[0]: ", myArray[0]);
+        console.log("myArray[1]: ", myArray[1]);
+        console.log("myArray[2]: ", myArray[2]);
+        console.log("myArray[3]: ", myArray[3]);
+
+        myArray[1] = 4;
+        myArray[0] = "Pakistan"
+
+        console.log("myArray[0]: ", myArray[0]);
+        console.log("myArray[1]: ", myArray[1]);
+        console.log("myArray[2]: ", myArray[2]);
+        console.log("myArray[3]: ", myArray[3]);
+
+        let indexFour = myArray[4];
+        console.log("indexFour: ", indexFour);
+
+        let secondArray = myArray;
+
+        console.log(myArray);
+        console.log(secondArray);
+
+        
+
+
+    </script>
+
+</body>
+
+
+</html>
