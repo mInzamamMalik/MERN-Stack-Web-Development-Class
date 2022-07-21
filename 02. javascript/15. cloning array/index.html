@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cloning Array</h1>
+
+    <script>
+
+        // let myArr = [1, 2, 3]; // 24byte
+        // let secondArray = myArr;
+
+        // console.log("myArr: ", myArr);
+        // console.log("secondArray: ", secondArray);
+
+        // secondArray[0] = "Pakistan";
+
+        // console.log("myArr: ", myArr);
+        // console.log("secondArray: ", secondArray);
+
+        // myArr[2] = "some new value"
+
+        // console.log("myArr: ", myArr);
+        // console.log("secondArray: ", secondArray);
+
+        ////////////////////////
+
+        let myArr = [1, 2, 3];
+        // let secondArray = [ myArr[0], myArr[1], myArr[2] ]
+        let secondArray = [...myArr]
+        // https://stackoverflow.com/a/52929821/4378475
+
+        console.log("myArr: ", myArr);
+        console.log("secondArray: ", secondArray);
+
+        secondArray[0] = "Pakistan";
+
+        console.log("myArr: ", myArr);
+        console.log("secondArray: ", secondArray);
+
+
+
+
+    </script>
+</body>
+
+</html>
