@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>For loop and Array</h1>
+
+    <script>
+        // let myArr = [2, 3, 1, 2, 4, 6, 7, 8];
+
+        // console.log("array length: ", myArr.length);
+
+        // for(let i = 0; i < myArr.length; i++){
+
+        //     console.log( myArr[i] );
+        // }
+
+        /////////////////
+
+        // let i = 0
+
+        // for (   ;   ;   ) { // all parameteres of for loop are optional
+
+        //     if (i > 9) {
+        //         break;
+        //     }
+        //     console.log(i);
+        //     i++;
+        // }
+
+        /////////////////
+
+        // let myArr = [2, 3, 1, 2, 4, 6, 7, 8];
+
+        // myArr.map((eachValue, index)=>{
+        //     console.log(`${index}: ${eachValue}`);
+        // });
+
+        /////////////////
+
+        // let myArr = [2, 3, 1, 2, 4, 6, 7, 8];
+
+        // let newArr = myArr.map((eachValue, index) => {
+
+        //     console.log(`${index}: ${eachValue}`);
+
+        //     if (eachValue % 2 === 0) {
+        //         return eachValue * 2;
+        //     } else {
+        //         return 0;
+        //     }
+        // });
+
+        // console.log("orignal array: ", myArr);
+        // console.log("new array: ", newArr);
+
+
+        ////////////////////
+
+        
+        function reducerFunction(previousValue, currentValue) {
+            return previousValue + currentValue; // 240
+        }
+
+        let subjectMarks = [80, 40, 90, 100, 60, 90, 80, 90, 100, 80];
+        // sum all items of array
+        let obtainedMarks = subjectMarks.reduce(reducerFunction, 0);
+        let totalMarks = subjectMarks.length * 100;
+        
+        console.log("obtained marks: ", obtainedMarks);
+        console.log("total marks: ", totalMarks);
+
+        let percentage = (obtainedMarks / totalMarks) * 100;
+
+        console.log("percentage: ", percentage);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
