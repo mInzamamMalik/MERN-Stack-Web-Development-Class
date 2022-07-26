@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Switch Case</h1>
+
+    <script>
+
+        // let operator = '*'; // + - * / %
+
+        // if (operator === '+') {
+        //     console.log(' user selected + operator');
+
+        // } else if (operator === '-') {
+        //     console.log(' user selected - operator');
+
+        // } else if (operator === '*') {
+        //     console.log(' user selected * operator');
+
+        // } else if (operator === '/') {
+        //     console.log(' user selected / operator');
+
+        // } else {
+        //     console.log(' user selected % operator');
+        // }
+
+
+        // switch (operator) {
+        //     case "+":
+        //         console.log(' user selected + operator');
+        //         break;
+
+        //     case "-":
+        //         console.log(' user selected - operator');
+        //         break;
+
+        //     case "*":
+        //         console.log(' user selected * operator');
+        //         break;
+
+        //     case "/":
+        //         console.log(' user selected / operator');
+        //         break;
+
+        //     default:
+        //         console.log(' user selected % operator');
+        //         break;
+        // }
+
+
+        ///////////////////////
+
+
+        let marks = 80;
+        let result = "";
+        let resultSwitch = "";
+
+        if (marks >= 80) {
+            result = "A1 grade"
+        } else if (marks < 80 && marks > 70) {
+            result = "A grade"
+        }
+
+        switch (true) {
+            case marks >= 80:
+                resultSwitch = "A1 grade"
+                break;
+
+            case marks < 80 && marks > 70:
+                resultSwitch = "A grade"
+                break;
+
+            default:
+                break;
+        }
+
+        console.log("result: " + result);
+        console.log("resultSwitch: " + resultSwitch);
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

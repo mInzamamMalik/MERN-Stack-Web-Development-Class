@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>es6 Arrow Functions</h1>
+
+    <script>
+        console.log(sumTwoNumbers(1, 2)); // because of hoisting, this function is available before it is initialized
+
+        // perform hoisting
+        // es5
+        function sumTwoNumbers(num1, num2) {
+            let result = num1 + num2;
+            return result;
+        }
+        console.log(sumTwoNumbers(10, 20));
+
+        
+        // no hoisting
+        // es5
+        let myFunction = function (num1, num2) {
+            let result = num1 + num2;
+            return result;
+        }
+        console.log(myFunction(10, 20));
+
+
+        // no hoisting
+        // es6
+        let myFunction1 = (num1, num2) => {
+            let result = num1 + num2;
+            return result;
+        }
+        console.log(myFunction1(10, 20));
+
+        // no hoisting
+        // es6
+        let myFunction2 = (num1, num2) => num1 + num2;
+        console.log(myFunction2(10, 20));
+
+        // no hoisting
+        // es6
+        let findCube = num => num * num * num;
+        console.log(findCube(5));
+
+
+
+
+
+    </script>
+</body>
+
+</html>
