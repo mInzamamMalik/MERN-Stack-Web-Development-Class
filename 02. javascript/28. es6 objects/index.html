@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1>ES6 Objects</h1>
+
+
+    <script>
+
+        // let arr = [4, 2, 5, 2, 3, 2];
+
+        // // JavaScript Object
+        // // JSON => javascript object notation
+        // let student = {
+        //     name: "John",
+        //     age: 30,
+        //     isAdmin: true,
+        //     courses: ["html", "css", "js"],
+        //     isMarried: false,
+        //     book: {
+        //         name: "Harry Potter",
+        //         price: 100
+        //     }
+        // };
+
+        // console.log(student.name);
+        // console.log(student.isAdmin);
+        // console.log(student.age);
+
+        // console.log(student.courses);
+
+        // console.log(student.courses[0]);
+        // console.log(student.courses[1]);
+        // console.log(student.courses[2]);
+
+
+        // console.log(student);
+
+        /////////////////////
+
+
+
+        // let student = {
+        //     name: "John",
+        //     age: 30,
+        //     isAdmin: true,
+        //     courses: ["html", "css", "js"],
+        //     isMarried: false,
+        //     book: {
+        //         name: "Harry Potter",
+        //         price: 100
+        //     }
+        // };
+        // console.log("Before: ", student);
+
+        // student.name = "Malik";
+        // student.age = 28;
+        // student.courses[0] = "html5";
+        // student.courses[2] = "es6";
+
+        // console.log("After: ", student)
+
+
+        //////////////////
+
+        // Cloning Object
+
+        let person = {
+            name: "Malik",
+            age: 28,
+            isAdmin: true,
+            courses: ["html", "css", "js"],
+            book: {
+                name: "Harry Potter",
+                price: 100
+            }
+        }
+    
+        // // reference copy
+        // let personCopy = person;
+
+        // // normal/shallow cloning
+        // let personCopy = { ...person }; 
+
+        // deep cloning // https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+        let stringForm = JSON.stringify(person);
+        let personCopy = JSON.parse(stringForm);
+
+        personCopy.name = "John";
+        person.age = 30;
+        person.courses[0] = "html5";
+
+        console.log(person);
+        console.log(personCopy);
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

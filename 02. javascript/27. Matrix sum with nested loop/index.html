@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .matrixInput {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .matrixInput>div>input {
+            margin: 5px;
+            width: 30px
+        }
+
+        .matrixInput>div {
+            border: 1px solid black;
+            margin: 15px;
+            padding: 15px;
+        }
+
+        .matrixInput>div:last-child {
+            border: 0px solid black;
+        }
+
+        .matrixInput>button {
+            margin: 10px;
+        }
+
+
+
+        .result {
+            border: 1px solid black;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .result>input {
+            margin: 5px;
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Matrix Sum</h1>
+
+    <div class="main">
+
+        <form class="matrixInput" onsubmit="processMatrix(event); return false">
+            <div>
+                <label for="">Matrix 1</label>
+                <br>
+
+                <input name="m1" type="number" id="m100">
+                <input name="m1" type="number" id="m101">
+                <input name="m1" type="number" id="m102">
+
+                <br>
+
+                <input name="m1" type="number" id="m110">
+                <input name="m1" type="number" id="m111">
+                <input name="m1" type="number" id="m112">
+
+                <br>
+
+                <input name="m1" type="number" id="m120">
+                <input name="m1" type="number" id="m121">
+                <input name="m1" type="number" id="m122">
+            </div>
+
+
+            <div>
+                <label for="">Matrix 2</label>
+                <br>
+
+                <input name="m2" type="number" id="m200">
+                <input name="m2" type="number" id="m201">
+                <input name="m2" type="number" id="m202">
+
+                <br>
+
+                <input name="m2" type="number" id="m210">
+                <input name="m2" type="number" id="m211">
+                <input name="m2" type="number" id="m212">
+
+                <br>
+
+                <input name="m2" type="number" id="m220">
+                <input name="m2" type="number" id="m221">
+                <input name="m2" type="number" id="m222">
+            </div>
+
+
+            <div>
+                <button type="submit">Sum</button>
+                <button type="submit">Subtract</button>
+            </div>
+        </form>
+
+
+
+        <div class="result">
+            <label for="">Result</label>
+            <br>
+
+            <input name="mr" type="number" disabled id="r00">
+            <input name="mr" type="number" disabled id="r01">
+            <input name="mr" type="number" disabled id="r02">
+
+            <br>
+
+            <input name="mr" type="number" disabled id="r10">
+            <input name="mr" type="number" disabled id="r11">
+            <input name="mr" type="number" disabled id="r12">
+
+            <br>
+
+            <input name="mr" type="number" disabled id="r20">
+            <input name="mr" type="number" disabled id="r21">
+            <input name="mr" type="number" disabled id="r22">
+        </div>
+
+
+    </div>
+
+    <script>
+
+        function processMatrix(e) {
+
+
+            // // METHOD 1
+            // let allInputsOfM1 = document.getElementsByName("m1")
+            // let allInputsOfM2 = document.getElementsByName("m2")
+            // let result = document.getElementsByName("mr")
+
+            // console.log(allInputsOfM1);
+            // console.log(allInputsOfM1.length);
+
+            // for (let i = 0; i < allInputsOfM1.length; i++) {
+            //     console.log(allInputsOfM1[i].value);
+            //     console.log(allInputsOfM2[i].value);
+
+            //     if (e.submitter.innerText.toLowerCase() === "sum")
+            //         result[i].value = Number(allInputsOfM1[i].value) + Number(allInputsOfM2[i].value);
+            //     else
+            //         result[i].value = Number(allInputsOfM1[i].value) - Number(allInputsOfM2[i].value);
+            // }
+
+
+            /////////////
+            // METHOD 2
+
+            // let matrixInput1 = [];
+            // let matrixInput2 = [];
+            // let resultMatrix = [];
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+
+                    // null check in nested array
+                    // if (!matrixInput1[i]) matrixInput1[i] = [];
+                    // if (!matrixInput2[i]) matrixInput2[i] = [];
+                    // if (!resultMatrix[i]) resultMatrix[i] = [];
+
+                    // console.log(i, j);
+                    // console.log(`#m1${i}${j}`);
+
+                    // matrixInput1[i][j] = document.querySelector(`#m1${i}${j}`).value
+                    // matrixInput2[i][j] = document.querySelector(`#m2${i}${j}`).value
+                    // resultMatrix[i][j] = Number(document.querySelector(`#m1${i}${j}`).value) + Number(document.querySelector(`#m2${i}${j}`).value)
+
+                    if (e.submitter.innerText.toLowerCase() === "sum")
+                        document.querySelector(`#r${i}${j}`).value = Number(document.querySelector(`#m1${i}${j}`).value) + Number(document.querySelector(`#m2${i}${j}`).value)
+                    else
+                        document.querySelector(`#r${i}${j}`).value = Number(document.querySelector(`#m1${i}${j}`).value) - Number(document.querySelector(`#m2${i}${j}`).value)
+                }
+            }
+
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
