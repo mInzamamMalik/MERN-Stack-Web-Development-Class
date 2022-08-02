@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=`, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </head>
 
 <body>
@@ -39,6 +40,20 @@
                     console.log(weatherData.current.temp_c);
 
                     console.log(weatherData.location.name);
+
+
+                    let time = weatherData.location.localtime;
+
+                    let formatedTime = moment(time).format("Do MMMM YYYY, h:mm:ss A")
+
+                    console.log("Time: ", formatedTime);
+                    // https://momentjs.com/docs/#/displaying/format/
+
+
+                    // from now example
+                    let fromNow = moment("1 august 2022").fromNow();
+                    console.log("From now: ", fromNow); 
+
                 })
                 .catch(function (error) {
                     // handle error
