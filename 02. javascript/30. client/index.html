@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Weather App</h1>
+
+    <form onsubmit="getWeather(); return false">
+
+        <label for="cityName">Enter city name:</label>
+        <input required type="text" name="" id="cityName">
+
+        <button type="submit">Get Weather Data</button>
+    </form>
+
+    <div id="result">
+
+    </div>
+
+    <script>
+        function getWeather() {
+
+            let cityName = document.getElementById("cityName").value;
+
+            axios.get(`https://my-weatherapp-online.herokuapp.com/weather`)
+                .then(function (response) {
+
+                    let data = response.data;
+
+                    console.log(data);
+                    document.getElementById("result").innerHTML = data.temperature;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>
