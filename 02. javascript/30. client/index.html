@@ -36,7 +36,12 @@
                     let data = response.data;
 
                     console.log(data);
-                    document.getElementById("result").innerHTML = data.temperature;
+                    document.getElementById("result").innerHTML =
+                        `
+                        <h1> Temprature:  ${data.temperature} </h1> <br>
+                        City: ${data.city} <br>
+                        Weather: ${data.weather} <br>
+                        `;
                 })
                 .catch(function (error) {
                     // handle error
