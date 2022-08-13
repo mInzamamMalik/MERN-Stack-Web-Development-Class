@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Signup Form</h1>
+
+
+    <form onsubmit="signup(); return false ">
+
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname">
+
+        <br>
+        <label for="username">Username</label>
+        <input type="text" id="username">
+
+        <br>
+        <label for="password">Password</label>
+        <input type="password" id="password">
+
+        <br>
+        <input type="submit" value="Signup">
+    </form>
+
+    <p id="message"></p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <button onclick="getAllUsers()">Get All Users</button>
+
+    <p id="allUserList"></p>
+
+    <script>
+
+        function signup() {
+            var fullname = document.getElementById('fullname').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            axios.post('https://social-media-server-sysborg.herokuapp.com/user', {
+
+                "fullname": fullname,
+                "username": username,
+                "password": password
+
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    document.querySelector("#message").innerHTML = response.data;
+                })
+                .catch(function (error) {
+                    console.log(error.message);
+                });
+
+
+
+        }
+
+
+        function getAllUsers() {
+
+            axios.get("https://social-media-server-sysborg.herokuapp.com/user")
+                .then(function (response) {
+                    console.log(response.data);
+
+                    response.data.map(eachUser => {
+                        document.querySelector("#allUserList").innerHTML +=
+
+                            `<b>${eachUser.fullname}</b> ${eachUser.username} ${eachUser.password} <br>`;
+                    })
+
+
+                })
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
