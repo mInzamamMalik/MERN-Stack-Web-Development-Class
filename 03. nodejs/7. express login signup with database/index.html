@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Signup Form</h1>
+
+
+    <form onsubmit="signup(); return false ">
+
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" required>
+        <br>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" required>
+        <br>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <br>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+        <br>
+
+        <label for="repeatPassword">Repeat Password</label>
+        <input type="password" id="repeatPassword" required>
+        <br>
+
+        <input type="submit" value="Signup">
+    </form>
+
+    <p id="message"></p>
+
+
+    <br>
+    <br>
+
+
+    <script>
+
+        function signup() {
+
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var repeatPassword = document.getElementById('repeatPassword').value;
+
+            if (password !== repeatPassword) {
+                document.querySelector("#message").innerHTML = 'Passwords do not match, please try again';
+                return;
+            }
+
+            axios.post('http://localhost:3000/signup', {
+
+                firstName,
+                lastName,
+                email,
+                password,
+
+            })
+                .then(function (response) {
+                    console.log(response.data);
+                    document.querySelector("#message").innerHTML = response.data.message;
+                })
+                .catch(function (error) {
+                    console.log(error.response.data);
+                    document.querySelector("#message").innerHTML = error.response.data.message;
+                });
+        }
+
+
+      
+    </script>
+
+
+</body>
+
+</html>
