@@ -45,8 +45,34 @@
     <br>
     <br>
 
+    <button onclick="getAllUser()">Get All users</button>
+
+    <p id="allUser"></p>
+
 
     <script>
+
+
+        function getAllUser() {
+
+            axios.get('http://localhost:3000/users')
+                .then(function (response) {
+                    console.log(response.data);
+
+                    response.data.map((eachUser) => {
+                        document.querySelector("#allUser").innerHTML +=
+                            `${eachUser.firstName} ${eachUser.lastName} - ${eachUser.email} <br>`
+                    })
+
+                })
+                .catch(function (error) {
+                    console.log(error.response.data);
+                    document.querySelector("#message").innerHTML = error.response.data.message;
+                });
+        }
+        getAllUser();
+
+
 
         function signup() {
 
@@ -80,7 +106,7 @@
         }
 
 
-      
+
     </script>
 
 

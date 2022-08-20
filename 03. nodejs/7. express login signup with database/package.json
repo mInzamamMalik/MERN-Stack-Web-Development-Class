@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/malikasinger1/restful-api-server-heroku#readme",
   "dependencies": {
+    "bcrypt-inzi": "^1.0.7",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.5.2",
