@@ -1,11 +1,7 @@
 import express from "express"
 import cors from "cors"
-import { nanoid } from 'nanoid';
 import mongoose from 'mongoose';
-import {
-    stringToHash,
-    varifyHash,
-} from "bcrypt-inzi"
+import { stringToHash, varifyHash } from "bcrypt-inzi"
 
 const app = express();
 app.use(express.json());
@@ -15,6 +11,7 @@ const port = process.env.PORT || 3000;
 
 
 const userSchema = new mongoose.Schema({
+
     firstName: { type: String },
     lastName: { type: String },
     email: { type: String, required: true },
@@ -64,27 +61,28 @@ app.post("/signup", (req, res) => {
 
                 stringToHash(body.password).then(hashString => {
 
-                    let newUser = new userModel({
+                    userModel.create({
                         firstName: body.firstName,
                         lastName: body.lastName,
                         email: body.email.toLowerCase(),
                         password: hashString
-                    });
-                    newUser.save((err, result) => {
-                        if (!err) {
-                            console.log("data saved: ", result);
-                            res.status(201).send({ message: "user is created" });
-                        } else {
-                            console.log("db error: ", err);
-                            res.status(500).send({ message: "internal server error" });
-                        }
-                    });
+                    },
+                        (err, result) => {
+                            if (!err) {
+                                console.log("data saved: ", result);
+                                res.status(201).send({ message: "user is created" });
+                            } else {
+                                console.log("db error: ", err);
+                                res.status(500).send({ message: "internal server error" });
+                            }
+                        });
                 })
 
             }
         } else {
             console.log("db error: ", err);
             res.status(500).send({ message: "db error in query" });
+            return;
         }
     })
 });

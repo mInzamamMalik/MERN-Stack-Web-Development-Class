@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="./libs/axios.min.js"></script> -->
+
+    <style>
+        #productsListDiv {
+            display: flex;
+        }
+
+        #productsListDiv>div {
+            border: 1px solid black;
+            width: 220px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            font-family: Verdana, sans-serif;
+        }
+
+        #productsListDiv>div:hover {
+            box-shadow: 0px 0px 10px black;
+        }
+
+        #productsListDiv>div>p>span:nth-child(2) {
+            font-size: 32px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Ali Express</h1>
+
+    <a href="./index.html">Home</a>
+    <a href="./products.html">All Products</a>
+
+
+    <div id="productsListDiv">
+
+
+
+    </div>
+
+
+
+    <script>
+
+        async function getAllProducts() {
+            try {
+
+                const response = await axios.get("http://localhost:3000/products");
+                console.log(response.data.data);
+
+                let productsListDiv = document.querySelector("#productsListDiv")
+
+                response.data.data.map(eachProduct => {
+
+                    productsListDiv.innerHTML +=
+                        `<div>
+                            <img src="./img/airpod.webp" alt="">
+                            <p> ${eachProduct.productName} </p>
+                            <p> 
+                                <span>${eachProduct.currencyCode}</span> 
+                                <span>${eachProduct.productPrice}</span> 
+                            </p>
+                            <p> ${eachProduct.numberOfSale || 0} sold </p>
+                            <p> ${(eachProduct.isFreeShipping) ? "free shipping" : "no free shipping"} </p>
+                            <p>${eachProduct.shopName}</p>
+                        </div>`
+                })
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getAllProducts();
+
+
+    </script>
+
+
+</body>
+
+</html>
