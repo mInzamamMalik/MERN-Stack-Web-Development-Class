@@ -40,7 +40,7 @@ export default function Login() {
             password: data.get('password'),
         });
 
-        let baseUrl = "http://localhost:3000";
+        let baseUrl = "http://localhost:5001";
         try {
             let response = await axios.post(`${baseUrl}/login`, {
                 email: data.get('email'),
