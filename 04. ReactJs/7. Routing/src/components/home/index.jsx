@@ -8,7 +8,7 @@ let Home = () => {
 
     const [cityName, setCityName] = useState("");
     const [data, setData] = useState([]);
-    
+
     // let myNum = 5
     // const [myNum, setMyNum] = useState(5);
 
@@ -37,7 +37,7 @@ let Home = () => {
 
 
     return (
-        <div >
+        <>
             <h1>Weather App Home</h1>
 
             <form onSubmit={submitHandler}>
@@ -94,7 +94,7 @@ let Home = () => {
 
 
 
-        </div>
+        </>
     );
 }
 
