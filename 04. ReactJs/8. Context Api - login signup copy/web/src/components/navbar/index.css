@@ -1,0 +1,32 @@
+.nav{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav>ul {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+
+}
+
+.nav>ul>li {
+    /* border: 1px solid black; */
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    background-color: #0d6efd;
+    font-size: 10px;
+}
+
+.nav>ul>li>a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav > .userName {
+    color: white;
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+}
