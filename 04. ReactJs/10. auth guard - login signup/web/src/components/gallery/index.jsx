@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from '../../context';
+import { GlobalContext } from '../../context/context';
 
 
 let Gallery = () => {

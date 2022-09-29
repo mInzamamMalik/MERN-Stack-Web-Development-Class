@@ -9,9 +9,8 @@ export default function NavBar() {
     let { state, dispatch } = useContext(GlobalContext);
 
     const logoutHandler = async () => {
-        let baseUrl = "http://localhost:5001";
         try {
-            let response = await axios.post(`${baseUrl}/logout`, {},
+            let response = await axios.post(`${state.baseUrl}/logout`, {},
                 {
                     withCredentials: true
                 })
@@ -32,9 +31,8 @@ export default function NavBar() {
 
             {(state.isLogin === true) ?
                 <ul>
-                    <li> <Link to="/">Home</Link>             </li>
+                    <li> <Link to="/">Products</Link>             </li>
                     <li> <Link to="/profile">Profile</Link>       </li>
-                    <li> <Link to="/gallery">Gallery</Link>   </li>
                     <li> <Link to="/login" onClick={logoutHandler}>Logout</Link>  </li>
 
                 </ul>

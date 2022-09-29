@@ -1,11 +1,10 @@
 import './App.css';
 
 import NavBar from "./components/navbar";
-import Home from "./components/home";
 import Profile from "./components/profile";
-import Gallery from "./components/gallery";
 import Login from "./components/login";
 import Signup from "./components/signup";
+import Products from './components/products';
 
 import {
   BrowserRouter as Router,
@@ -27,10 +26,9 @@ function App() {
   useEffect(() => {
 
     const getProfile = async () => {
-      let baseUrl = "http://localhost:5001";
       try {
         let response = await axios({
-          url: `${baseUrl}/profile`,
+          url: `${state.baseUrl}/profile`,
           method: "get",
           withCredentials: true
         })
@@ -49,6 +47,7 @@ function App() {
       }
     }
     getProfile();
+    
   }, [])
 
 
@@ -62,8 +61,7 @@ function App() {
         {(state.isLogin === true) ?
           <>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Products />} />
             <Route path="*" element={<Navigate to="/" />} />
           </>
           :

@@ -33,7 +33,18 @@ const userSchema = new mongoose.Schema({
 
     createdOn: { type: Date, default: Date.now },
 });
-const userModel = mongoose.model('User', userSchema);
+const userModel = mongoose.model('Users', userSchema);
+
+const productSchema = new mongoose.Schema({
+
+    name: { type: String, required: true },
+    description: { type: String },
+    price: { type: String, required: true },
+    code: { type: String, required: true },
+
+    createdOn: { type: Date, default: Date.now },
+});
+const productModel = mongoose.model('Products', productSchema);
 
 
 app.post("/login", (req, res) => {
@@ -238,6 +249,34 @@ app.get("/profile", async (req, res) => {
     }
 })
 
+
+app.post("/product", async (req, res) => {
+
+    console.log("product received: ", req.body);
+
+
+    let newProduct = new productModel({
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        code: req.body.code,
+    })
+    try {
+        let response = await newProduct.save()
+        console.log("product added: ", response);
+
+        res.send({
+            message: "product added",
+            data: response
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to add product"
+        });
+    }
+
+
+})
 
 
 
