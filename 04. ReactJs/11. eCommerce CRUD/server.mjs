@@ -329,27 +329,21 @@ app.put("/product/:id", async (req, res) => {
         });
     }
 })
-app.delete("/product", async (req, res) => {
+app.delete("/product/:id", async (req, res) => {
 
     console.log("product received: ", req.body);
 
-    let newProduct = new productModel({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        code: req.body.code,
-    })
     try {
-        let response = await newProduct.save()
-        console.log("product added: ", response);
+        let deleted = await productModel.deleteOne({ _id: req.params.id })
+        console.log("product deleted: ", deleted);
 
         res.send({
-            message: "product added",
-            data: response
+            message: "product deleted",
+            data: deleted
         });
     } catch (error) {
         res.status(500).send({
-            message: "failed to add product"
+            message: "failed to delete product"
         });
     }
 })
