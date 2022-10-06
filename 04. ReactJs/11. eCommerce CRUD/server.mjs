@@ -1,12 +1,15 @@
-import express from "express"
+import express, { request } from "express"
 import cors from "cors"
 import mongoose from 'mongoose';
-import { stringToHash, varifyHash } from "bcrypt-inzi"
 import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
+import { stringToHash, varifyHash } from "bcrypt-inzi"
 
 
+const dbURI = process.env.MONGODBURI || 'mongodb+srv://abc:abc@cluster0.xwbyne9.mongodb.net/socialMediaBase?retryWrites=true&w=majority';
 const SECRET = process.env.SECRET || "topsecret";
+const port = process.env.PORT || 5001;
+
 
 const app = express();
 app.use(express.json()); // parsing body
@@ -18,7 +21,6 @@ app.use(cors({
     credentials: true
 }));
 
-const port = process.env.PORT || 5001;
 
 
 const userSchema = new mongoose.Schema({
@@ -67,20 +69,20 @@ app.post("/login", (req, res) => {
         { email: body.email },
         // { email:1, firstName:1, lastName:1, age:1, password:0 },
         "email firstName lastName age password",
-        (err, data) => {
+        (err, user) => {
             if (!err) {
-                console.log("data: ", data);
+                console.log("user: ", user);
 
-                if (data) { // user found
-                    varifyHash(body.password, data.password).then(isMatched => {
+                if (user) { // user found
+                    varifyHash(body.password, user.password).then(isMatched => {
 
                         console.log("isMatched: ", isMatched);
 
                         if (isMatched) {
 
                             var token = jwt.sign({
-                                _id: data._id,
-                                email: data.email,
+                                _id: user._id,
+                                email: user.email,
                                 iat: Math.floor(Date.now() / 1000) - 30,
                                 exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24),
                             }, SECRET);
@@ -89,17 +91,17 @@ app.post("/login", (req, res) => {
 
                             res.cookie('Token', token, {
                                 maxAge: 86_400_000,
-                                httpOnly: true
+                                httpOnly: true // https only cookies are the most secure one
                             });
 
                             res.send({
                                 message: "login successful",
                                 profile: {
-                                    email: data.email,
-                                    firstName: data.firstName,
-                                    lastName: data.lastName,
-                                    age: data.age,
-                                    _id: data._id
+                                    email: user.email,
+                                    firstName: user.firstName,
+                                    lastName: user.lastName,
+                                    age: user.age,
+                                    _id: user._id
                                 }
                             });
                             return;
@@ -157,12 +159,12 @@ app.post("/signup", (req, res) => {
     }
 
     // check if user already exist // query email user
-    userModel.findOne({ email: body.email }, (err, data) => {
+    userModel.findOne({ email: body.email }, (err, user) => {
         if (!err) {
-            console.log("data: ", data);
+            console.log("user: ", user);
 
-            if (data) { // user already exist
-                console.log("user already exist: ", data);
+            if (user) { // user already exist
+                console.log("user already exist: ", user);
                 res.status(400).send({ message: "user already exist,, please try a different email" });
                 return;
 
@@ -196,6 +198,8 @@ app.post("/signup", (req, res) => {
     })
 });
 
+
+// every request will go through this check point
 app.use(function (req, res, next) {
     console.log("req.cookies: ", req.cookies);
 
@@ -227,17 +231,6 @@ app.use(function (req, res, next) {
     });
 })
 
-app.get("/users", async (req, res) => {
-
-    try {
-        let allUser = await userModel.find({}).exec();
-        res.send(allUser);
-
-    } catch (error) {
-        res.status(500).send({ message: "error getting users" });
-    }
-})
-
 app.get("/profile", async (req, res) => {
 
     try {
@@ -250,10 +243,43 @@ app.get("/profile", async (req, res) => {
 })
 
 
+app.get("/products", async (req, res) => {
+    try {
+        let products = await productModel.find({}).exec();
+        console.log("all product : ", products);
+
+        res.send({
+            message: "all products",
+            data: products
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to get product"
+        });
+    }
+})
+
+app.get("/product/:id", async (req, res) => {
+    try {
+        let product = await productModel
+            .findOne({ _id: req.params.id })
+            .exec();
+        console.log("product : ", product);
+
+        res.send({
+            message: "product",
+            data: product
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to get product"
+        });
+    }
+})
+
 app.post("/product", async (req, res) => {
 
     console.log("product received: ", req.body);
-
 
     let newProduct = new productModel({
         name: req.body.name,
@@ -274,18 +300,66 @@ app.post("/product", async (req, res) => {
             message: "failed to add product"
         });
     }
+})
 
+app.put("/product/:id", async (req, res) => {
 
+    console.log("data to be edited: ", req.body);
+
+    let update = {}
+    if (req.body.name) update.name = req.body.name
+    if (req.body.description) update.description = req.body.description
+    if (req.body.price) update.price = req.body.price
+    if (req.body.code) update.code = req.body.code
+
+    try {
+        let updated = await productModel
+            .findOneAndUpdate({ _id: req.params.id }, update, { new: true })
+            .exec();
+
+        console.log("updated product: ", updated);
+
+        res.send({
+            message: "product updated successfully",
+            data: updated
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to update product"
+        });
+    }
+})
+app.delete("/product", async (req, res) => {
+
+    console.log("product received: ", req.body);
+
+    let newProduct = new productModel({
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        code: req.body.code,
+    })
+    try {
+        let response = await newProduct.save()
+        console.log("product added: ", response);
+
+        res.send({
+            message: "product added",
+            data: response
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to add product"
+        });
+    }
 })
 
 
 
 
-
-
-
-
-
+app.use((req, res) => {
+    res.status(404).send("404 not found");
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
@@ -299,7 +373,6 @@ app.listen(port, () => {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
-let dbURI = process.env.MONGODBURI || 'mongodb+srv://abc:abc@cluster0.xwbyne9.mongodb.net/socialMediaBase?retryWrites=true&w=majority';
 mongoose.connect(dbURI);
 
 ////////////////mongodb connected disconnected events///////////////////////////////////////////////
