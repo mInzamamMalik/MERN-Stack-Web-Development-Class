@@ -10,7 +10,7 @@ let data = {
     isLogin: null,
     darkTheme: true,
     myNum: 5,
-    baseUrl: (window.location.href.indexOf("https") === -1) ? "http://localhost:5001" : "https://mongodb-crud-ecommerce-store.herokuapp.com"
+    baseUrl: (window.location.href.indexOf("https") === -1) ? "http://localhost:5001" : "https://ecommerce-crud-production.up.railway.app"
 }
 
 export default function ContextProvider({ children }) {

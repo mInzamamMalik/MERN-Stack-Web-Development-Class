@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "app.web.ecom_25516.twa",
+                     "sha256_cert_fingerprints": ["DD:54:DC:64:B4:A3:30:96:2E:1D:67:F6:E8:C2:D0:CF:E5:D7:C0:06:59:DD:33:DA:96:D6:F7:FC:82:0C:C3:84"] }
+      }
+]
