@@ -58,8 +58,7 @@ app.use(cors({
 
 const userSchema = new mongoose.Schema({
 
-    firstName: { type: String },
-    lastName: { type: String },
+    name: { type: String },
     email: { type: String, required: true },
     password: { type: String, required: true },
     profilePicture: { type: String, required: true },
@@ -189,6 +188,23 @@ app.post("/signup", upload.any(), (req, res) => {
 
 
 });
+
+
+app.get("/users", async (req, res) => {
+    try {
+        let users = await userModel.find({}).exec();
+        console.log("all user : ", users);
+
+        res.send({
+            message: "all users",
+            data: users
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: "failed to get product"
+        });
+    }
+})
 
 
 app.listen(port, () => {

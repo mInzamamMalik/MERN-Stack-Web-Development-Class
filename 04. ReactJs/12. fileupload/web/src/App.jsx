@@ -1,7 +1,30 @@
 import './App.css';
 import axios from 'axios';
+import { useEffect, useState } from "react";
+
 
 function App() {
+
+  const [Name, setName] = useState("")
+  const [Email, setEmail] = useState("")
+  const [Password, setPassword] = useState("")
+
+  const [users, setUsers] = useState([])
+  const [toggleRefresh, setToggleRefresh] = useState(true)
+
+  useEffect(() => {
+
+    let getAllUsers = async () => {
+      let response = await axios.get('http://localhost:5001/users');
+      setUsers(response.data.data)
+    }
+    getAllUsers();
+
+  }, [toggleRefresh])
+
+
+
+
 
   const doSignup = async (e) => {
     e.preventDefault();
@@ -13,9 +36,9 @@ function App() {
     // https://developer.mozilla.org/en-US/docs/Web/API/FormData/append#syntax
 
 
-    formData.append("name", "malik"); // this is how you add some text data along with file
-    formData.append("email", "malik@sysborg.com"); // this is how you add some text data along with file
-    formData.append("password", "12345"); // this is how you add some text data along with file
+    formData.append("name", Name); // this is how you add some text data along with file
+    formData.append("email", Email); // this is how you add some text data along with file
+    formData.append("password", Password); // this is how you add some text data along with file
     formData.append("profilePicture", profilePictureInput.files[0]); // file input is for browser only, use fs to read file in nodejs client
 
 
@@ -28,6 +51,7 @@ function App() {
     })
       .then(res => {
         console.log(`upload Success` + res.data);
+        setToggleRefresh(!toggleRefresh)
       })
       .catch(err => {
         console.log(err);
@@ -39,11 +63,11 @@ function App() {
     <div>
 
       <form onSubmit={doSignup}>
-        Name: <input name="name" type="text" placeholder="Name" id='name' />
+        Name: <input name="name" type="text" placeholder="Name" id='name' onChange={(e)=>{setName(e.target.value)}} />
         <br />
-        Email: <input name="email" type="email" placeholder="Email" id='email' />
+        Email: <input name="email" type="email" placeholder="Email" id='email' onChange={(e)=>{setEmail(e.target.value)}} />
         <br />
-        Password: <input name="password" type="password" placeholder="Password" id='password' />
+        Password: <input name="password" type="password" placeholder="Password" id='password' onChange={(e)=>{setPassword(e.target.value)}} />
         <br />
 
         Profile Picture: <input type="file" id="profilePictureInput" accept='image/*'
@@ -60,6 +84,19 @@ function App() {
         <br />
         <button type='submit'>Signup</button>
       </form>
+
+
+      <h1>Users List: </h1>
+
+      <div>
+        {users.map(eachUser => (
+          <div key={eachUser.id}>
+            <span>{eachUser.name}</span>
+            <span>{eachUser.email}</span>
+            <img width="100px" src={eachUser.profilePicture} alt="" />
+          </div>
+        ))}
+      </div>
 
 
 
